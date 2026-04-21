@@ -15,6 +15,20 @@ void convertToIndex(int slot, int &row, int &col) {
     col = (slot - 1) % 3;
 }
 
+bool isValidMove(char board[3][3], int row, int col) {
+    // Check boundaries
+    if (row < 0 || row > 2 || col < 0 || col > 2) {
+        return false;
+    }
+
+    // Check if cell is empty
+    if (board[row][col] != '-') {
+        return false;
+    }
+
+    return true;
+}
+
 int main() {
     char board[3][3];
 
@@ -67,7 +81,11 @@ if (isUserTurn) {
     int row, col;
     convertToIndex(userMove, row, col);
 
-    cout << "Row: " << row << " Column: " << col << endl;
+    if (isValidMove(board, row, col)) {
+        cout << "Valid Move at (" << row << "," << col << ")" << endl;
+    } else {
+        cout << "Invalid Move! Try again." << endl;
+    }
 }
     return 0;
 }
