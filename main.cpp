@@ -10,6 +10,11 @@ int getUserMove() {
     return slot;
 }
 
+void convertToIndex(int slot, int &row, int &col) {
+    row = (slot - 1) / 3;
+    col = (slot - 1) % 3;
+}
+
 int main() {
     char board[3][3];
 
@@ -58,7 +63,11 @@ int main() {
 
 if (isUserTurn) {
     int userMove = getUserMove();
-    cout << "You selected slot: " << userMove << endl;
+
+    int row, col;
+    convertToIndex(userMove, row, col);
+
+    cout << "Row: " << row << " Column: " << col << endl;
 }
     return 0;
 }
