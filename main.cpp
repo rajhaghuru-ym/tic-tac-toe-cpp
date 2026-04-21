@@ -3,6 +3,13 @@
 #include <ctime>
 using namespace std;
 
+int getUserMove() {
+    int slot;
+    cout << "\nEnter your move (1-9): ";
+    cin >> slot;
+    return slot;
+}
+
 int main() {
     char board[3][3];
 
@@ -49,5 +56,9 @@ int main() {
     else
         cout << "Current Turn: Computer\n";
 
+if (isUserTurn) {
+    int userMove = getUserMove();
+    cout << "You selected slot: " << userMove << endl;
+}
     return 0;
 }
